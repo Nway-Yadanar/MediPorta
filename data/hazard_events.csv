@@ -1,0 +1,16 @@
+event_id,hazard_type,lat,lon,radius_km,severity,event_date,valid_until,source,_data_provenance
+HZ-0001,conflict,20.87,92.55,15,0.8,2025-11-02,2026-02-02,acled_style,acled_real_schema_sample
+HZ-0002,conflict,20.15,92.90,20,0.7,2025-12-14,2026-03-14,acled_style,acled_real_schema_sample
+HZ-0003,conflict,20.60,93.20,12,0.6,2026-01-08,2026-04-08,acled_style,acled_real_schema_sample
+HZ-0004,flood,20.30,93.05,25,0.7,2025-08-15,2025-10-30,unosat_style,flood_layer_schema_sample
+HZ-0005,flood,20.90,92.40,18,0.6,2025-08-20,2025-10-15,unosat_style,flood_layer_schema_sample
+HZ-0006,conflict,23.64,94.41,18,0.7,2025-10-20,2026-01-20,acled_style,acled_real_schema_sample
+HZ-0007,conflict,22.44,94.87,15,0.6,2025-11-30,2026-02-28,acled_style,acled_real_schema_sample
+HZ-0008,conflict,24.87,94.92,22,0.75,2026-01-15,2026-04-15,acled_style,acled_real_schema_sample
+HZ-0009,flood,23.20,94.30,30,0.65,2025-08-10,2025-10-20,unosat_style,flood_layer_schema_sample
+HZ-0010,earthquake_damage,21.90,95.98,40,0.8,2025-03-28,2026-03-28,field_report_style,earthquake_schema_sample
+HZ-0011,earthquake_damage,21.45,95.95,35,0.7,2025-03-28,2026-03-28,field_report_style,earthquake_schema_sample
+HZ-0012,access_restriction,21.15,96.45,10,0.5,2025-12-01,2026-06-01,field_report_style,field_report_schema_sample
+HZ-0013,conflict,21.40,95.20,14,0.55,2025-12-20,2026-03-20,acled_style,acled_real_schema_sample
+HZ-0014,flood,24.87,94.92,20,0.6,2025-08-25,2025-10-25,unosat_style,flood_layer_schema_sample
+HZ-0015,conflict,20.13,92.90,16,0.65,2026-01-25,2026-04-25,acled_style,acled_real_schema_sample

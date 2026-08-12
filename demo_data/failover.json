@@ -1,0 +1,166 @@
+{
+  "MED_ORS": {
+    "item_name": "Oral rehydration salts",
+    "cold_chain": false,
+    "max_transit_hours": 720,
+    "storage_temp": "ambient",
+    "manifest": {
+      "carrying": "Oral rehydration salts",
+      "must_arrive_within_h": 720,
+      "normal_route_h": 17.25,
+      "blockage_route_h": 13.27,
+      "normal_margin_h": 702.8,
+      "blockage_margin_h": 706.7,
+      "within_time_window": true,
+      "cold_chain_breaks_on_boat": false,
+      "failure_mode": "none"
+    },
+    "normal": {
+      "stops": [
+        "HUB-Buthidaung",
+        "CL-0271",
+        "CL-0270"
+      ],
+      "total_cost_hr": 17.25,
+      "distance_km": 938.53,
+      "n_clinics": 2,
+      "payload_feasible": true,
+      "payload_reason": "within viability window"
+    },
+    "blockage": {
+      "bridge_cut": [
+        "RN-1203808",
+        "RN-1203812"
+      ],
+      "clinic_c_status": "road_accessible",
+      "reroute_uses_water": true,
+      "reachable": true,
+      "total_cost_hr": 15.855,
+      "distance_km": 474.33,
+      "payload_feasible": true,
+      "payload_reason": "within viability window",
+      "reroute_waypoints": [
+        {
+          "id": "HUB-Buthidaung",
+          "name": "HUB-Buthidaung",
+          "type": "township_hub",
+          "mode_in": "road",
+          "lat": 20.87487800000004,
+          "lon": 92.55736800000004
+        },
+        {
+          "id": "DOCK-MDW-S",
+          "name": "DOCK-MDW-S",
+          "type": "dock",
+          "mode_in": "transfer",
+          "lat": 20.72,
+          "lon": 92.4
+        },
+        {
+          "id": "DOCK-ALT",
+          "name": "DOCK-ALT",
+          "type": "dock",
+          "mode_in": "water",
+          "lat": 20.7,
+          "lon": 92.455
+        },
+        {
+          "id": "CL-0270",
+          "name": "Ah Lel Than Kyaw Station Hospital",
+          "type": "clinic",
+          "mode_in": "water",
+          "lat": 20.68461300000007,
+          "lon": 92.43838500000004
+        }
+      ],
+      "reroute_summary": {
+        "road_hours": 12.8,
+        "boat_hours": 0.48,
+        "total_hours": 13.27,
+        "distance_km": 474.3
+      }
+    }
+  },
+  "VAC_OPV": {
+    "item_name": "Oral polio vaccine",
+    "cold_chain": true,
+    "max_transit_hours": 24,
+    "storage_temp": "2-8",
+    "manifest": {
+      "carrying": "Oral polio vaccine",
+      "must_arrive_within_h": 24,
+      "normal_route_h": 17.25,
+      "blockage_route_h": 13.27,
+      "normal_margin_h": 6.8,
+      "blockage_margin_h": 10.7,
+      "within_time_window": true,
+      "cold_chain_breaks_on_boat": true,
+      "failure_mode": "cold_chain_break"
+    },
+    "normal": {
+      "stops": [
+        "HUB-Buthidaung",
+        "CL-0271",
+        "CL-0270"
+      ],
+      "total_cost_hr": 17.25,
+      "distance_km": 938.53,
+      "n_clinics": 2,
+      "payload_feasible": true,
+      "payload_reason": "within viability window"
+    },
+    "blockage": {
+      "bridge_cut": [
+        "RN-1203808",
+        "RN-1203812"
+      ],
+      "clinic_c_status": "road_accessible",
+      "reroute_uses_water": true,
+      "reachable": true,
+      "total_cost_hr": 15.855,
+      "distance_km": 474.33,
+      "payload_feasible": false,
+      "payload_reason": "VAC_OPV requires 2-8C cold chain not maintainable on this route segment",
+      "reroute_waypoints": [
+        {
+          "id": "HUB-Buthidaung",
+          "name": "HUB-Buthidaung",
+          "type": "township_hub",
+          "mode_in": "road",
+          "lat": 20.87487800000004,
+          "lon": 92.55736800000004
+        },
+        {
+          "id": "DOCK-MDW-S",
+          "name": "DOCK-MDW-S",
+          "type": "dock",
+          "mode_in": "transfer",
+          "lat": 20.72,
+          "lon": 92.4
+        },
+        {
+          "id": "DOCK-ALT",
+          "name": "DOCK-ALT",
+          "type": "dock",
+          "mode_in": "water",
+          "lat": 20.7,
+          "lon": 92.455
+        },
+        {
+          "id": "CL-0270",
+          "name": "Ah Lel Than Kyaw Station Hospital",
+          "type": "clinic",
+          "mode_in": "water",
+          "lat": 20.68461300000007,
+          "lon": 92.43838500000004
+        }
+      ],
+      "reroute_summary": {
+        "road_hours": 12.8,
+        "boat_hours": 0.48,
+        "total_hours": 13.27,
+        "distance_km": 474.3
+      }
+    }
+  }
+}

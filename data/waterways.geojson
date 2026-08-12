@@ -1,0 +1,45 @@
+{
+  "type": "FeatureCollection",
+  "_data_provenance": "SYNTHETIC hand-drawn waterway lines approximating the Mayu River / coastal corridor in northern Rakhine, connecting synthetic docks. Geometry is illustrative, not hydrographically surveyed. dock_sequence lists the ordered docks each waterway connects (used to build boat edges).",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "waterway_id": "WW-MAYU",
+        "name": "Mayu River Corridor",
+        "dock_sequence": ["DOCK-MDW-N", "DOCK-KYC", "DOCK-TBZ", "DOCK-MID", "DOCK-BTD"],
+        "_synthetic": true
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [[92.300, 21.150], [92.360, 21.070], [92.520, 21.020], [92.470, 20.980], [92.540, 20.870]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "waterway_id": "WW-COAST",
+        "name": "Coastal Supply Route",
+        "dock_sequence": ["DOCK-MDW-N", "DOCK-MDW-S", "DOCK-ALT", "DOCK-RTD"],
+        "_synthetic": true
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [[92.300, 21.150], [92.400, 20.720], [92.455, 20.700], [92.760, 20.500]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "waterway_id": "WW-BTD-RTD",
+        "name": "Buthidaung-Rathedaung Link",
+        "dock_sequence": ["DOCK-BTD", "DOCK-MID", "DOCK-RTD"],
+        "_synthetic": true
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [[92.540, 20.870], [92.470, 20.980], [92.760, 20.500]]
+      }
+    }
+  ]
+}

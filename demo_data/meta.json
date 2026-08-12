@@ -1,0 +1,16 @@
+{
+  "hub": "HUB-Buthidaung",
+  "n_clinics": 306,
+  "n_near_water": 5,
+  "telecom_counts": {
+    "normal": 37,
+    "intermittent": 33,
+    "blackout": 8
+  },
+  "n_blackout_clinics": 31,
+  "n_townships_blackout": 8,
+  "provenance": {
+    "real": "clinic locations/IDs, road topology, disease->region priorities, WHO cold-chain windows, blackout township reporting, clinic stock/demand",
+    "proxy_synthetic": "waterway geometry, dock locations, boat speed, transfer penalty, per-segment cold-chain capability, conflict-proxy telecom"
+  }
+}

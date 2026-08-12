@@ -1,0 +1,79 @@
+township_pcode,township,state_region,n_clinics,telecom_status,priority_multiplier,_source,_data_provenance
+MMR010009,Madaya,Mandalay,6,blackout,1.3,Access Now #KeepItOn 2024 report; Myanmar Shutdown Tracker; Athan; Myanmar Internet Project (2021-2025),real_reporting
+MMR010008,Pyinoolwin,Mandalay,3,blackout,1.3,Access Now #KeepItOn 2024 report; Myanmar Shutdown Tracker; Athan; Myanmar Internet Project (2021-2025),real_reporting
+MMR010010,Singu,Mandalay,4,blackout,1.3,Access Now #KeepItOn 2024 report; Myanmar Shutdown Tracker; Athan; Myanmar Internet Project (2021-2025),real_reporting
+MMR010012,Thabeikkyin,Mandalay,4,blackout,1.3,Access Now #KeepItOn 2024 report; Myanmar Shutdown Tracker; Athan; Myanmar Internet Project (2021-2025),real_reporting
+MMR012014,Ann,Rakhine,5,blackout,1.3,Access Now #KeepItOn 2024 report; Myanmar Shutdown Tracker; Athan; Myanmar Internet Project (2021-2025),real_reporting
+MMR012010,Buthidaung,Rakhine,3,blackout,1.3,Access Now #KeepItOn 2024 report; Myanmar Shutdown Tracker; Athan; Myanmar Internet Project (2021-2025),real_reporting
+MMR012011,Kyaukpyu,Rakhine,3,blackout,1.3,Access Now #KeepItOn 2024 report; Myanmar Shutdown Tracker; Athan; Myanmar Internet Project (2021-2025),real_reporting
+MMR012004,Kyauktaw,Rakhine,3,blackout,1.3,Access Now #KeepItOn 2024 report; Myanmar Shutdown Tracker; Athan; Myanmar Internet Project (2021-2025),real_reporting
+MMR012009,Maungdaw,Rakhine,5,blackout,1.3,Access Now #KeepItOn 2024 report; Myanmar Shutdown Tracker; Athan; Myanmar Internet Project (2021-2025),real_reporting
+MMR012005,Minbya,Rakhine,3,blackout,1.3,Access Now #KeepItOn 2024 report; Myanmar Shutdown Tracker; Athan; Myanmar Internet Project (2021-2025),real_reporting
+MMR012003,Mrauk-U,Rakhine,4,blackout,1.3,Access Now #KeepItOn 2024 report; Myanmar Shutdown Tracker; Athan; Myanmar Internet Project (2021-2025),real_reporting
+MMR012012,Munaung,Rakhine,3,blackout,1.3,Access Now #KeepItOn 2024 report; Myanmar Shutdown Tracker; Athan; Myanmar Internet Project (2021-2025),real_reporting
+MMR012006,Myebon,Rakhine,5,blackout,1.3,Access Now #KeepItOn 2024 report; Myanmar Shutdown Tracker; Athan; Myanmar Internet Project (2021-2025),real_reporting
+MMR012007,Pauktaw,Rakhine,2,blackout,1.3,Access Now #KeepItOn 2024 report; Myanmar Shutdown Tracker; Athan; Myanmar Internet Project (2021-2025),real_reporting
+MMR012002,Ponnagyun,Rakhine,4,blackout,1.3,Access Now #KeepItOn 2024 report; Myanmar Shutdown Tracker; Athan; Myanmar Internet Project (2021-2025),real_reporting
+MMR012013,Ramree,Rakhine,6,blackout,1.3,Access Now #KeepItOn 2024 report; Myanmar Shutdown Tracker; Athan; Myanmar Internet Project (2021-2025),real_reporting
+MMR012008,Rathedaung,Rakhine,4,blackout,1.3,Access Now #KeepItOn 2024 report; Myanmar Shutdown Tracker; Athan; Myanmar Internet Project (2021-2025),real_reporting
+MMR012001,Sittwe,Rakhine,2,blackout,1.3,Access Now #KeepItOn 2024 report; Myanmar Shutdown Tracker; Athan; Myanmar Internet Project (2021-2025),real_reporting
+MMR005014,Ayadaw,Sagaing,3,blackout,1.3,Access Now #KeepItOn 2024 report; Myanmar Shutdown Tracker; Athan; Myanmar Internet Project (2021-2025),real_reporting
+MMR005023,Banmauk,Sagaing,3,blackout,1.3,Access Now #KeepItOn 2024 report; Myanmar Shutdown Tracker; Athan; Myanmar Internet Project (2021-2025),real_reporting
+MMR005034,Homalin,Sagaing,8,blackout,1.3,Access Now #KeepItOn 2024 report; Myanmar Shutdown Tracker; Athan; Myanmar Internet Project (2021-2025),real_reporting
+MMR005021,Indaw,Sagaing,3,blackout,1.3,Access Now #KeepItOn 2024 report; Myanmar Shutdown Tracker; Athan; Myanmar Internet Project (2021-2025),real_reporting
+MMR005027,Kale,Sagaing,4,blackout,1.3,Access Now #KeepItOn 2024 report; Myanmar Shutdown Tracker; Athan; Myanmar Internet Project (2021-2025),real_reporting
+MMR005017,Kani,Sagaing,4,blackout,1.3,Access Now #KeepItOn 2024 report; Myanmar Shutdown Tracker; Athan; Myanmar Internet Project (2021-2025),real_reporting
+MMR005024,Kawlin,Sagaing,4,blackout,1.3,Access Now #KeepItOn 2024 report; Myanmar Shutdown Tracker; Athan; Myanmar Internet Project (2021-2025),real_reporting
+MMR005029,Mingin,Sagaing,5,blackout,1.3,Access Now #KeepItOn 2024 report; Myanmar Shutdown Tracker; Athan; Myanmar Internet Project (2021-2025),real_reporting
+MMR005019,Pale,Sagaing,3,blackout,1.3,Access Now #KeepItOn 2024 report; Myanmar Shutdown Tracker; Athan; Myanmar Internet Project (2021-2025),real_reporting
+MMR005026,Pinlebu,Sagaing,3,blackout,1.3,Access Now #KeepItOn 2024 report; Myanmar Shutdown Tracker; Athan; Myanmar Internet Project (2021-2025),real_reporting
+MMR005018,Salingyi,Sagaing,4,blackout,1.3,Access Now #KeepItOn 2024 report; Myanmar Shutdown Tracker; Athan; Myanmar Internet Project (2021-2025),real_reporting
+MMR005010,Tabayin,Sagaing,5,blackout,1.3,Access Now #KeepItOn 2024 report; Myanmar Shutdown Tracker; Athan; Myanmar Internet Project (2021-2025),real_reporting
+MMR005025,Wuntho,Sagaing,3,blackout,1.3,Access Now #KeepItOn 2024 report; Myanmar Shutdown Tracker; Athan; Myanmar Internet Project (2021-2025),real_reporting
+MMR010006,Amarapura,Mandalay,5,intermittent,1.15,Access Now #KeepItOn 2024 report; Myanmar Shutdown Tracker; Athan; Myanmar Internet Project (2021-2025),real_reporting
+MMR010013,Kyaukse,Mandalay,5,intermittent,1.15,Access Now #KeepItOn 2024 report; Myanmar Shutdown Tracker; Athan; Myanmar Internet Project (2021-2025),real_reporting
+MMR010028,Meiktila,Mandalay,3,intermittent,1.15,Access Now #KeepItOn 2024 report; Myanmar Shutdown Tracker; Athan; Myanmar Internet Project (2021-2025),real_reporting
+MMR010022,Nyaung-U,Mandalay,5,intermittent,1.15,Access Now #KeepItOn 2024 report; Myanmar Shutdown Tracker; Athan; Myanmar Internet Project (2021-2025),real_reporting
+MMR005015,Chaung-U,Sagaing,3,intermittent,1.15,Access Now #KeepItOn 2024 report; Myanmar Shutdown Tracker; Athan; Myanmar Internet Project (2021-2025),real_reporting
+MMR005007,Kanbalu,Sagaing,4,intermittent,1.15,Access Now #KeepItOn 2024 report; Myanmar Shutdown Tracker; Athan; Myanmar Internet Project (2021-2025),real_reporting
+MMR005005,Khin-U,Sagaing,3,intermittent,1.15,Access Now #KeepItOn 2024 report; Myanmar Shutdown Tracker; Athan; Myanmar Internet Project (2021-2025),real_reporting
+MMR005008,Kyunhla,Sagaing,6,intermittent,1.15,Access Now #KeepItOn 2024 report; Myanmar Shutdown Tracker; Athan; Myanmar Internet Project (2021-2025),real_reporting
+MMR005012,Monywa,Sagaing,3,intermittent,1.15,Access Now #KeepItOn 2024 report; Myanmar Shutdown Tracker; Athan; Myanmar Internet Project (2021-2025),real_reporting
+MMR005013,Monywa,Sagaing,1,intermittent,1.15,Access Now #KeepItOn 2024 report; Myanmar Shutdown Tracker; Athan; Myanmar Internet Project (2021-2025),real_reporting
+MMR005001,Sagaing,Sagaing,5,intermittent,1.15,Access Now #KeepItOn 2024 report; Myanmar Shutdown Tracker; Athan; Myanmar Internet Project (2021-2025),real_reporting
+MMR005004,Shwebo,Sagaing,5,intermittent,1.15,Access Now #KeepItOn 2024 report; Myanmar Shutdown Tracker; Athan; Myanmar Internet Project (2021-2025),real_reporting
+MMR005011,Taze,Sagaing,5,intermittent,1.15,Access Now #KeepItOn 2024 report; Myanmar Shutdown Tracker; Athan; Myanmar Internet Project (2021-2025),real_reporting
+MMR005006,Wetlet,Sagaing,4,intermittent,1.15,Access Now #KeepItOn 2024 report; Myanmar Shutdown Tracker; Athan; Myanmar Internet Project (2021-2025),real_reporting
+MMR005009,Ye-U,Sagaing,3,intermittent,1.15,Access Now #KeepItOn 2024 report; Myanmar Shutdown Tracker; Athan; Myanmar Internet Project (2021-2025),real_reporting
+MMR010020,Kyaukpadaung,Mandalay,4,normal,1.0,no documented shutdown,assumed_normal_no_report
+MMR010029,Mahlaing,Mandalay,4,normal,1.0,no documented shutdown,assumed_normal_no_report
+MMR010011,Mogoke,Mandalay,2,normal,1.0,no documented shutdown,assumed_normal_no_report
+MMR010017,Myingyan,Mandalay,4,normal,1.0,no documented shutdown,assumed_normal_no_report
+MMR010015,Myittha,Mandalay,6,normal,1.0,no documented shutdown,assumed_normal_no_report
+MMR010019,Natogyi,Mandalay,4,normal,1.0,no documented shutdown,assumed_normal_no_report
+MMR010021,Ngazun,Mandalay,3,normal,1.0,no documented shutdown,assumed_normal_no_report
+MMR010007,Patheingyi,Mandalay,4,normal,1.0,no documented shutdown,assumed_normal_no_report
+MMR010024,Pyawbwe,Mandalay,8,normal,1.0,no documented shutdown,assumed_normal_no_report
+MMR010014,Sintgaing,Mandalay,3,normal,1.0,no documented shutdown,assumed_normal_no_report
+MMR010016,Tada-U,Mandalay,4,normal,1.0,no documented shutdown,assumed_normal_no_report
+MMR010018,Taungtha,Mandalay,5,normal,1.0,no documented shutdown,assumed_normal_no_report
+MMR010030,Thazi,Mandalay,4,normal,1.0,no documented shutdown,assumed_normal_no_report
+MMR010031,Wundwin,Mandalay,4,normal,1.0,no documented shutdown,assumed_normal_no_report
+MMR010023,Yamethin,Mandalay,5,normal,1.0,no documented shutdown,assumed_normal_no_report
+MMR012017,Gwa,Rakhine,3,normal,1.0,no documented shutdown,assumed_normal_no_report
+MMR012015,Thandwe,Rakhine,5,normal,1.0,no documented shutdown,assumed_normal_no_report
+MMR012016,Toungup,Rakhine,5,normal,1.0,no documented shutdown,assumed_normal_no_report
+MMR005013,Budalin,Sagaing,3,normal,1.0,no documented shutdown,assumed_normal_no_report
+MMR005033,Hkamti,Sagaing,2,normal,1.0,no documented shutdown,assumed_normal_no_report
+MMR005028,Kalewa,Sagaing,2,normal,1.0,no documented shutdown,assumed_normal_no_report
+MMR005020,Katha,Sagaing,6,normal,1.0,no documented shutdown,assumed_normal_no_report
+MMR005036,Lahe,Sagaing,3,normal,1.0,no documented shutdown,assumed_normal_no_report
+MMR005035,Lay Shi,Sagaing,3,normal,1.0,no documented shutdown,assumed_normal_no_report
+MMR005031,Mawlaik,Sagaing,3,normal,1.0,no documented shutdown,assumed_normal_no_report
+MMR005003,Myaung,Sagaing,3,normal,1.0,no documented shutdown,assumed_normal_no_report
+MMR005002,Myinmu,Sagaing,3,normal,1.0,no documented shutdown,assumed_normal_no_report
+MMR005037,Nanyun,Sagaing,3,normal,1.0,no documented shutdown,assumed_normal_no_report
+MMR005032,Paungbyin,Sagaing,3,normal,1.0,no documented shutdown,assumed_normal_no_report
+MMR005030,Tamu,Sagaing,5,normal,1.0,no documented shutdown,assumed_normal_no_report
+MMR005022,Tigyaing,Sagaing,6,normal,1.0,no documented shutdown,assumed_normal_no_report
+MMR005016,Yinmarbin,Sagaing,3,normal,1.0,no documented shutdown,assumed_normal_no_report

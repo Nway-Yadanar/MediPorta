@@ -1,0 +1,19 @@
+{
+  "type": "FeatureCollection",
+  "_data_provenance": "SYNTHETIC hand-drawn Chindwin River centerline through Sagaing, following the real south-to-north course from Kani up to Hkamti. Geometry is illustrative, not hydrographically surveyed. dock_sequence lists ordered docks used to build boat edges.",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "waterway_id": "WW-CHINDWIN",
+        "name": "Chindwin River Corridor",
+        "dock_sequence": ["DOCK-KANI", "DOCK-MINGIN", "DOCK-KALEWA", "DOCK-MAWLAIK", "DOCK-PAUNGBYIN", "DOCK-HOMALIN", "DOCK-HKAMTI"],
+        "_synthetic": true
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [[94.86, 22.44], [94.50, 22.88], [94.30, 23.20], [94.41, 23.64], [94.82, 24.27], [94.92, 24.87], [95.70, 25.99]]
+      }
+    }
+  ]
+}

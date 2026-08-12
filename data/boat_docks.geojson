@@ -1,0 +1,46 @@
+{
+  "type": "FeatureCollection",
+  "_data_provenance": "SYNTHETIC hand-placed dock points near real coastal Rakhine clinics (Maungdaw/Buthidaung/Rathedaung). No open dock dataset at this granularity exists for Myanmar; positions are plausible riverine/coastal transfer points, not surveyed infrastructure.",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {"dock_id": "DOCK-MDW-N", "name": "Maungdaw North Jetty", "_synthetic": true},
+      "geometry": {"type": "Point", "coordinates": [92.300, 21.150]}
+    },
+    {
+      "type": "Feature",
+      "properties": {"dock_id": "DOCK-MDW-S", "name": "Maungdaw South Jetty", "_synthetic": true},
+      "geometry": {"type": "Point", "coordinates": [92.400, 20.720]}
+    },
+    {
+      "type": "Feature",
+      "properties": {"dock_id": "DOCK-BTD", "name": "Buthidaung River Dock", "_synthetic": true},
+      "geometry": {"type": "Point", "coordinates": [92.540, 20.870]}
+    },
+    {
+      "type": "Feature",
+      "properties": {"dock_id": "DOCK-RTD", "name": "Rathedaung Landing", "_synthetic": true},
+      "geometry": {"type": "Point", "coordinates": [92.760, 20.500]}
+    },
+    {
+      "type": "Feature",
+      "properties": {"dock_id": "DOCK-MID", "name": "Mayu River Midpoint Transfer", "_synthetic": true},
+      "geometry": {"type": "Point", "coordinates": [92.470, 20.980]}
+    },
+    {
+      "type": "Feature",
+      "properties": {"dock_id": "DOCK-KYC", "name": "Kyein Chaung Jetty", "_synthetic": true},
+      "geometry": {"type": "Point", "coordinates": [92.360, 21.070]}
+    },
+    {
+      "type": "Feature",
+      "properties": {"dock_id": "DOCK-ALT", "name": "Ah Lel Than Kyaw Landing", "_synthetic": true},
+      "geometry": {"type": "Point", "coordinates": [92.455, 20.700]}
+    },
+    {
+      "type": "Feature",
+      "properties": {"dock_id": "DOCK-TBZ", "name": "Taung Bazar Dock", "_synthetic": true},
+      "geometry": {"type": "Point", "coordinates": [92.520, 21.020]}
+    }
+  ]
+}

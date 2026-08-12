@@ -1,0 +1,514 @@
+{
+  "feature_count": 811523,
+  "geometry_types": {
+    "LINESTRING": 800851,
+    "POINT": 10399,
+    "POLYGON": 273
+  },
+  "bbox": [
+    92.1764143,
+    9.7832548,
+    101.1608578,
+    28.3571059
+  ],
+  "columns": [
+    {
+      "name": "id",
+      "type": "VARCHAR",
+      "null_count": 0,
+      "null_percent": 0.0,
+      "distinct_count": 811523,
+      "top_values": []
+    },
+    {
+      "name": "name",
+      "type": "VARCHAR",
+      "null_count": 784660,
+      "null_percent": 96.69,
+      "distinct_count": 12733,
+      "top_values": []
+    },
+    {
+      "name": "name_en",
+      "type": "VARCHAR",
+      "null_count": 785828,
+      "null_percent": 96.83,
+      "distinct_count": 15241,
+      "top_values": []
+    },
+    {
+      "name": "name_my",
+      "type": "VARCHAR",
+      "null_count": 794775,
+      "null_percent": 97.94,
+      "distinct_count": 6690,
+      "top_values": []
+    },
+    {
+      "name": "highway",
+      "type": "VARCHAR",
+      "null_count": 0,
+      "null_percent": 0.0,
+      "distinct_count": 49,
+      "top_values": [
+        {
+          "value": "residential",
+          "count": 335119
+        },
+        {
+          "value": "track",
+          "count": 179232
+        },
+        {
+          "value": "unclassified",
+          "count": 148123
+        },
+        {
+          "value": "service",
+          "count": 51281
+        },
+        {
+          "value": "path",
+          "count": 41783
+        }
+      ]
+    },
+    {
+      "name": "surface",
+      "type": "VARCHAR",
+      "null_count": 783914,
+      "null_percent": 96.6,
+      "distinct_count": 37,
+      "top_values": [
+        {
+          "value": "unpaved",
+          "count": 12225
+        },
+        {
+          "value": "asphalt",
+          "count": 6890
+        },
+        {
+          "value": "ground",
+          "count": 3084
+        },
+        {
+          "value": "concrete",
+          "count": 1979
+        },
+        {
+          "value": "paved",
+          "count": 978
+        }
+      ]
+    },
+    {
+      "name": "smoothness",
+      "type": "VARCHAR",
+      "null_count": 810556,
+      "null_percent": 99.88,
+      "distinct_count": 7,
+      "top_values": [
+        {
+          "value": "good",
+          "count": 446
+        },
+        {
+          "value": "bad",
+          "count": 213
+        },
+        {
+          "value": "intermediate",
+          "count": 155
+        },
+        {
+          "value": "excellent",
+          "count": 61
+        },
+        {
+          "value": "very_bad",
+          "count": 51
+        }
+      ]
+    },
+    {
+      "name": "width",
+      "type": "VARCHAR",
+      "null_count": 811318,
+      "null_percent": 99.97,
+      "distinct_count": 28,
+      "top_values": [
+        {
+          "value": "3",
+          "count": 45
+        },
+        {
+          "value": "2",
+          "count": 27
+        },
+        {
+          "value": "1",
+          "count": 26
+        },
+        {
+          "value": "6",
+          "count": 14
+        },
+        {
+          "value": "10",
+          "count": 13
+        }
+      ]
+    },
+    {
+      "name": "lanes",
+      "type": "VARCHAR",
+      "null_count": 806184,
+      "null_percent": 99.34,
+      "distinct_count": 16,
+      "top_values": [
+        {
+          "value": "2",
+          "count": 2649
+        },
+        {
+          "value": "4",
+          "count": 820
+        },
+        {
+          "value": "1",
+          "count": 787
+        },
+        {
+          "value": "3",
+          "count": 702
+        },
+        {
+          "value": "6",
+          "count": 282
+        }
+      ]
+    },
+    {
+      "name": "oneway",
+      "type": "VARCHAR",
+      "null_count": 782665,
+      "null_percent": 96.44,
+      "distinct_count": 6,
+      "top_values": [
+        {
+          "value": "no",
+          "count": 20514
+        },
+        {
+          "value": "yes",
+          "count": 8271
+        },
+        {
+          "value": "reversible",
+          "count": 61
+        },
+        {
+          "value": "-1",
+          "count": 7
+        },
+        {
+          "value": "alternating",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "name": "bridge",
+      "type": "VARCHAR",
+      "null_count": 788017,
+      "null_percent": 97.1,
+      "distinct_count": 13,
+      "top_values": [
+        {
+          "value": "yes",
+          "count": 22177
+        },
+        {
+          "value": "low_water_crossing",
+          "count": 1271
+        },
+        {
+          "value": "viaduct",
+          "count": 18
+        },
+        {
+          "value": "boardwalk",
+          "count": 14
+        },
+        {
+          "value": "covered",
+          "count": 6
+        }
+      ]
+    },
+    {
+      "name": "layer",
+      "type": "VARCHAR",
+      "null_count": 789060,
+      "null_percent": 97.23,
+      "distinct_count": 6,
+      "top_values": [
+        {
+          "value": "1",
+          "count": 22064
+        },
+        {
+          "value": "-1",
+          "count": 364
+        },
+        {
+          "value": "2",
+          "count": 28
+        },
+        {
+          "value": "-2",
+          "count": 3
+        },
+        {
+          "value": "0",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "name": "source",
+      "type": "VARCHAR",
+      "null_count": 811523,
+      "null_percent": 100.0,
+      "distinct_count": 0,
+      "top_values": []
+    },
+    {
+      "name": "adm0_pcode",
+      "type": "VARCHAR",
+      "null_count": 0,
+      "null_percent": 0.0,
+      "distinct_count": 1,
+      "top_values": [
+        {
+          "value": "MMR",
+          "count": 811523
+        }
+      ]
+    },
+    {
+      "name": "adm0_name",
+      "type": "VARCHAR",
+      "null_count": 0,
+      "null_percent": 0.0,
+      "distinct_count": 1,
+      "top_values": [
+        {
+          "value": "Myanmar",
+          "count": 811523
+        }
+      ]
+    },
+    {
+      "name": "adm1_pcode",
+      "type": "VARCHAR",
+      "null_count": 267,
+      "null_percent": 0.03,
+      "distinct_count": 18,
+      "top_values": [
+        {
+          "value": "MMR017",
+          "count": 112797
+        },
+        {
+          "value": "MMR010",
+          "count": 109313
+        },
+        {
+          "value": "MMR015",
+          "count": 82104
+        },
+        {
+          "value": "MMR014",
+          "count": 70738
+        },
+        {
+          "value": "MMR013",
+          "count": 65883
+        }
+      ]
+    },
+    {
+      "name": "adm1_name",
+      "type": "VARCHAR",
+      "null_count": 267,
+      "null_percent": 0.03,
+      "distinct_count": 18,
+      "top_values": [
+        {
+          "value": "Ayeyarwady",
+          "count": 112797
+        },
+        {
+          "value": "Mandalay",
+          "count": 109313
+        },
+        {
+          "value": "Shan (North)",
+          "count": 82104
+        },
+        {
+          "value": "Shan (South)",
+          "count": 70738
+        },
+        {
+          "value": "Yangon",
+          "count": 65883
+        }
+      ]
+    },
+    {
+      "name": "adm2_pcode",
+      "type": "VARCHAR",
+      "null_count": 267,
+      "null_percent": 0.03,
+      "distinct_count": 80,
+      "top_values": [
+        {
+          "value": "MMR010D001",
+          "count": 29965
+        },
+        {
+          "value": "MMR007D001",
+          "count": 29920
+        },
+        {
+          "value": "MMR014D001",
+          "count": 28571
+        },
+        {
+          "value": "MMR017D005",
+          "count": 27791
+        },
+        {
+          "value": "MMR015D001",
+          "count": 27518
+        }
+      ]
+    },
+    {
+      "name": "adm2_name",
+      "type": "VARCHAR",
+      "null_count": 267,
+      "null_percent": 0.03,
+      "distinct_count": 80,
+      "top_values": [
+        {
+          "value": "Mandalay",
+          "count": 29965
+        },
+        {
+          "value": "Bago",
+          "count": 29920
+        },
+        {
+          "value": "Taunggyi",
+          "count": 28571
+        },
+        {
+          "value": "Maubin",
+          "count": 27791
+        },
+        {
+          "value": "Lashio",
+          "count": 27518
+        }
+      ]
+    },
+    {
+      "name": "adm3_pcode",
+      "type": "VARCHAR",
+      "null_count": 267,
+      "null_percent": 0.03,
+      "distinct_count": 324,
+      "top_values": [
+        {
+          "value": "MMR015001",
+          "count": 12547
+        },
+        {
+          "value": "MMR010007",
+          "count": 11171
+        },
+        {
+          "value": "MMR014001",
+          "count": 10270
+        },
+        {
+          "value": "MMR017021",
+          "count": 9890
+        },
+        {
+          "value": "MMR007006",
+          "count": 9536
+        }
+      ]
+    },
+    {
+      "name": "adm3_name",
+      "type": "VARCHAR",
+      "null_count": 267,
+      "null_percent": 0.03,
+      "distinct_count": 322,
+      "top_values": [
+        {
+          "value": "Lashio",
+          "count": 12547
+        },
+        {
+          "value": "Patheingyi",
+          "count": 11171
+        },
+        {
+          "value": "Taunggyi",
+          "count": 10270
+        },
+        {
+          "value": "Nyaungdon",
+          "count": 9890
+        },
+        {
+          "value": "Kyauktaga",
+          "count": 9536
+        }
+      ]
+    },
+    {
+      "name": "adm4_pcode",
+      "type": "VARCHAR",
+      "null_count": 811523,
+      "null_percent": 100.0,
+      "distinct_count": 0,
+      "top_values": []
+    },
+    {
+      "name": "adm4_name",
+      "type": "VARCHAR",
+      "null_count": 811523,
+      "null_percent": 100.0,
+      "distinct_count": 0,
+      "top_values": []
+    },
+    {
+      "name": "name_latin",
+      "type": "VARCHAR",
+      "null_count": 777814,
+      "null_percent": 95.85,
+      "distinct_count": 19222,
+      "top_values": []
+    }
+  ],
+  "summary": "811,523 features. geometry types: 800,851 LINESTRING, 10,399 POINT, 273 POLYGON. 14 of 24 columns are >=50% null (name, name_en, name_my, surface, smoothness, width, lanes, oneway, bridge, layer, source, adm4_pcode, adm4_name, name_latin).",
+  "temporal": null
+}

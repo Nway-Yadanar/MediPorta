@@ -1,0 +1,13 @@
+{
+  "type": "FeatureCollection",
+  "_data_provenance": "SYNTHETIC hand-placed dock points along the Chindwin River corridor in Sagaing, near real river-town clinics (Kani, Mingin, Kalewa, Mawlaik, Tamu, Paungbyin, Homalin, Hkamti). No open dock dataset at this granularity exists for Myanmar; positions approximate real riverside settlements, not surveyed infrastructure.",
+  "features": [
+    {"type": "Feature", "properties": {"dock_id": "DOCK-KANI", "name": "Kani River Dock", "_synthetic": true}, "geometry": {"type": "Point", "coordinates": [94.86, 22.44]}},
+    {"type": "Feature", "properties": {"dock_id": "DOCK-MINGIN", "name": "Mingin Landing", "_synthetic": true}, "geometry": {"type": "Point", "coordinates": [94.50, 22.88]}},
+    {"type": "Feature", "properties": {"dock_id": "DOCK-KALEWA", "name": "Kalewa River Port", "_synthetic": true}, "geometry": {"type": "Point", "coordinates": [94.30, 23.20]}},
+    {"type": "Feature", "properties": {"dock_id": "DOCK-MAWLAIK", "name": "Mawlaik Jetty", "_synthetic": true}, "geometry": {"type": "Point", "coordinates": [94.41, 23.64]}},
+    {"type": "Feature", "properties": {"dock_id": "DOCK-PAUNGBYIN", "name": "Paungbyin Landing", "_synthetic": true}, "geometry": {"type": "Point", "coordinates": [94.82, 24.27]}},
+    {"type": "Feature", "properties": {"dock_id": "DOCK-HOMALIN", "name": "Homalin River Port", "_synthetic": true}, "geometry": {"type": "Point", "coordinates": [94.92, 24.87]}},
+    {"type": "Feature", "properties": {"dock_id": "DOCK-HKAMTI", "name": "Hkamti River Dock", "_synthetic": true}, "geometry": {"type": "Point", "coordinates": [95.70, 25.99]}}
+  ]
+}

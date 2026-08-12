@@ -1,0 +1,105 @@
+{
+  "stops": [
+    "HUB-Buthidaung",
+    "CL-0271",
+    "CL-0270"
+  ],
+  "stop_names": [
+    "HUB-Buthidaung",
+    "Kyein Chaung Station Hospital",
+    "Ah Lel Than Kyaw Station Hospital"
+  ],
+  "legs": [
+    {
+      "from": "HUB-Buthidaung",
+      "to": "CL-0271",
+      "waypoints": [
+        {
+          "id": "HUB-Buthidaung",
+          "name": "HUB-Buthidaung",
+          "type": "township_hub",
+          "mode_in": "road",
+          "lat": 20.87487800000004,
+          "lon": 92.55736800000004
+        },
+        {
+          "id": "DOCK-KYC",
+          "name": "DOCK-KYC",
+          "type": "dock",
+          "mode_in": "transfer",
+          "lat": 21.07,
+          "lon": 92.36
+        },
+        {
+          "id": "CL-0271",
+          "name": "Kyein Chaung Station Hospital",
+          "type": "clinic",
+          "mode_in": "water",
+          "lat": 21.087560000000053,
+          "lon": 92.33924000000007
+        }
+      ],
+      "summary": {
+        "road_hours": 12.8,
+        "boat_hours": 0.16,
+        "total_hours": 12.96,
+        "distance_km": 453.5
+      }
+    },
+    {
+      "from": "CL-0271",
+      "to": "CL-0270",
+      "waypoints": [
+        {
+          "id": "CL-0271",
+          "name": "Kyein Chaung Station Hospital",
+          "type": "clinic",
+          "mode_in": "road",
+          "lat": 21.087560000000053,
+          "lon": 92.33924000000007
+        },
+        {
+          "id": "DOCK-KYC",
+          "name": "DOCK-KYC",
+          "type": "dock",
+          "mode_in": "water",
+          "lat": 21.07,
+          "lon": 92.36
+        },
+        {
+          "id": "DOCK-MDW-S",
+          "name": "DOCK-MDW-S",
+          "type": "dock",
+          "mode_in": "transfer",
+          "lat": 20.72,
+          "lon": 92.4
+        },
+        {
+          "id": "DOCK-ALT",
+          "name": "DOCK-ALT",
+          "type": "dock",
+          "mode_in": "water",
+          "lat": 20.7,
+          "lon": 92.455
+        },
+        {
+          "id": "CL-0270",
+          "name": "Ah Lel Than Kyaw Station Hospital",
+          "type": "clinic",
+          "mode_in": "water",
+          "lat": 20.68461300000007,
+          "lon": 92.43838500000004
+        }
+      ],
+      "summary": {
+        "road_hours": 1.0,
+        "boat_hours": 0.64,
+        "total_hours": 1.64,
+        "distance_km": 485.1
+      }
+    }
+  ],
+  "total_hours": 17.25,
+  "total_km": 938.53,
+  "n_clinics": 2
+}
