@@ -31,7 +31,7 @@ REGIONS = {
             {"id": "CL-0294", "name": "Thandwe General Hospital", "bed": 100},
             {"id": "CL-0248", "name": "Mrauk-U Township Hospital", "bed": 100},
         ],
-        # failover: near-water clinic reachable by a road that a single bridge cuts
+        
         "scenario": {"clinic": "CL-0270", "type": "bridge_to_boat"},
     },
     "Sagaing": {
@@ -61,7 +61,7 @@ REGIONS = {
                       "they don't belong.",
         "center": [21.4, 96.0],
         "zoom": 8,
-        "waterways": None,   # honest: no water story in landlocked Mandalay
+        "waterways": None,   
         "docks": None,
         "hubs": [
             {"id": "CL-0152", "name": "Pyinoolwin General Hospital", "bed": 300, "default": True},

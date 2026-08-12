@@ -46,7 +46,7 @@ def classify_accessibility(
     water_clinic_ids = water_clinic_ids or set()
     blocked_edges = blocked_edges or set()
 
-    # Build a view of the graph with blocked edges removed (scenario-aware)
+    
     if blocked_edges:
         H = G.copy()
         for e in blocked_edges:
@@ -56,7 +56,7 @@ def classify_accessibility(
     else:
         H = G
 
-    # Single-source reachability from the hub is far cheaper than per-clinic path search
+    
     reachable = set(nx.node_connected_component(H, hub_node)) if hub_node in H else set()
 
     df = clinics_scored.copy()
@@ -72,10 +72,10 @@ def classify_accessibility(
         near_water.append(is_near_water)
 
         if not is_reachable:
-            # No road path in this scenario. Boat fallback only if near water.
+            
             statuses.append(PARTIAL if is_near_water else ROAD_INACCESSIBLE)
         elif flag == "conflict_restricted":
-            # Road exists but restricted -> partial (prefer multimodal if water available)
+            
             statuses.append(PARTIAL if is_near_water else ROAD_ACCESSIBLE)
         else:
             statuses.append(ROAD_ACCESSIBLE)

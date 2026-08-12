@@ -41,15 +41,14 @@ def build_graph(nodes_df: pd.DataFrame, edges_df: pd.DataFrame, clinics_scored: 
         for n in nodes_df.itertuples()
     )
 
-    # attach vulnerability score + access flag onto clinic nodes
+    
     vuln_lookup = clinics_scored.set_index("clinic_id")[["vulnerability_score", "road_access_flag"]].to_dict("index")
 
     speed_map = AVG_SPEED_KMH
     risk_mult_map = ROAD_ACCESS_RISK_MULTIPLIER
 
     def edge_iter():
-        # prefer the hazard-enriched risk column when present (real overlay);
-        # fall back to the road-class placeholder otherwise
+        
         has_enriched = "enriched_disruption_risk" in edges_df.columns
         for e in edges_df.itertuples():
             speed = speed_map.get(e.road_type, 20)
@@ -94,9 +93,7 @@ def compute_edge_cost(edge_data: dict, dest_vulnerability: float, risk_weight: f
     risk_factor = 1 + (risk_weight * disruption)
     equity_discount = max(0.1, 1 - (equity_weight * 0.3 * dest_vulnerability))  # floor so cost never hits 0/negative
 
-    # Mode preference: boats/transfers carry an operational penalty so a road route
-    # is preferred by default. Boats are only chosen when the road path is genuinely
-    # unavailable or far worse (e.g. after a bridge blockage). Roads have multiplier 1.0.
+
     mode_mult = edge_data.get("mode_cost_multiplier", 1.0)
 
     return travel_time * risk_factor * equity_discount * mode_mult

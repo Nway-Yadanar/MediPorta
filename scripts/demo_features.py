@@ -38,7 +38,7 @@ def main():
     G = build_graph(nodes, edges, scored)
     print(f"[graph] {G.number_of_nodes()} nodes, {G.number_of_edges()} edges")
 
-    # --- Feature 3: add water layer ---
+    # add water layer 
     docks, water_clinics = add_water_layer(
         G,
         os.path.join(data, "waterways.geojson"),
@@ -48,15 +48,12 @@ def main():
     print(f"[water] added {len(docks)} docks; {len(water_clinics)} clinics near water: "
           f"{sorted(water_clinics)}")
 
-    # --- Feature 2: accessibility classification (normal conditions) ---
+    
     hub = "HUB-Buthidaung"   # a real township hub in coastal Rakhine
     access = classify_accessibility(G, scored, hub, water_clinics)
     print(f"[access] normal-condition status counts: {accessibility_summary(access)}")
 
-    # --- Feature 1: multi-clinic on-the-way run ---
-    # clinic C = CL-0270 (Ah Lel Than Kyaw): near a dock AND has a real road
-    # bridge that isolates it -> the clean failover case. A/B are other
-    # near-water clinics on the way.
+   
     clinic_c = "CL-0270"
     others = [c for c in sorted(water_clinics) if c != clinic_c]
     a, b = others[0], others[1]
@@ -64,7 +61,7 @@ def main():
     print(f"[multi] on-the-way run served {plan['n_clinics_served']} clinics: {plan['stops']}")
     print(f"        total {plan['total_cost_hr']}h / {plan['total_distance_km']}km")
 
-    # --- Feature 4 + headline failover: ambient vs cold-chain payload ---
+    
     for item in ["MED_ORS", "VAC_OPV"]:
         result = run_failover_scenario(
             G, hub, a, b, clinic_c, scored, water_clinics, payloads, item

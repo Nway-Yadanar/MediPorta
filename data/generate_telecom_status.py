@@ -55,8 +55,8 @@ KNOWN_BLACKOUT_TOWNSHIPS = {
 }
 
 PRIORITY_MULTIPLIER = {
-    "blackout": 1.30,      # cannot call at all -> strongest push
-    "intermittent": 1.15,  # unreliable -> moderate push
+    "blackout": 1.30,      
+    "intermittent": 1.15,  
     "normal": 1.00,
 }
 
@@ -64,11 +64,6 @@ PRIORITY_MULTIPLIER = {
 def main():
     clinics = pd.read_csv("clinics.csv")
 
-    # one row per township (PCODE), carrying region + a conflict signal.
-    # We only treat CONFLICT_RESTRICTED as a comms-degradation signal -- seasonal
-    # roads are a weather/access issue, not a shutdown signal. This keeps the
-    # proxy DISCRIMINATING: if nearly every township came back "intermittent",
-    # the layer would carry no information. Most townships should be 'normal'.
     tw = (
         clinics.groupby(["township_pcode", "township", "state_region"])
         .agg(

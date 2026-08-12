@@ -41,9 +41,7 @@ for ax, (path, cost, dist, label, color) in zip(
         (smart_path, smart_cost, smart_dist, "MediRoute Risk-Weighted Route", "#2ca02c"),
     ],
 ):
-    # background: sample of roads (full real network is 280k+ edges -- too dense
-    # to render every segment legibly; a random sample still conveys network
-    # density/coverage without a multi-minute matplotlib render)
+   
     bg_sample = edges.sample(n=min(15000, len(edges)), random_state=1) if len(edges) > 15000 else edges
     for _, e in bg_sample.iterrows():
         p1, p2 = node_pos[e.from_node], node_pos[e.to_node]

@@ -19,14 +19,11 @@ import pandas as pd
 import numpy as np
 
 REAL_DIR = "real"
-
-# --- CONFIG: point this at whichever file you actually downloaded ----------
-SOURCE_FILE = f"{REAL_DIR}/health_facilities.geojson"   # <-- rename to match your download
-SOURCE_TYPE = "mimu_hospitals"  # one of: "mimu_hospitals" | "hotosm_health" | "healthsites"
-
-# Bounding box filter -> Rakhine + Sagaing only (adjust if you want all of Myanmar)
+SOURCE_FILE = f"{REAL_DIR}/health_facilities.geojson"  
+SOURCE_TYPE = "mimu_hospitals"  
+# Bounding box filter -> Rakhine + Sagaing only 
 RAKHINE_SAGAING_BBOX = {
-    "lat_min": 15.5, "lat_max": 26.5,   # Sagaing extends much further north than Rakhine
+    "lat_min": 15.5, "lat_max": 26.5,   
     "lon_min": 92.0, "lon_max": 97.5,
 }
 
@@ -35,9 +32,6 @@ def load_mimu_hospitals(path: str) -> pd.DataFrame:
     gdf = gpd.read_file(path)
     gdf["latitude"] = gdf.geometry.y
     gdf["longitude"] = gdf.geometry.x
-
-    # MIMU schema fields observed: nmhsp_eng (name), lvlhsp_eng (level), bedclass,
-    # sr_pcode (state/region pcode), sr (state/region name), dt_pcode (district pcode)
     df = pd.DataFrame({
         "clinic_id": [f"CL-{i:04d}" for i in range(1, len(gdf) + 1)],
         "clinic_name": gdf.get("nmhsp_eng", gdf.get("name", "Unknown")),
@@ -58,7 +52,7 @@ def load_hotosm_health(path: str) -> pd.DataFrame:
     df = pd.DataFrame({
         "clinic_id": [f"CL-{i:04d}" for i in range(1, len(gdf) + 1)],
         "clinic_name": gdf.get("name", gdf.get("name_en", "Unnamed facility")),
-        "township_pcode": "UNKNOWN",  # OSM export has no PCode; spatial-join to township boundaries if needed
+        "township_pcode": "UNKNOWN",  
         "latitude": gdf["latitude"],
         "longitude": gdf["longitude"],
         "facility_level": gdf.get("amenity", gdf.get("healthcare", "unknown")),
@@ -96,14 +90,14 @@ def add_placeholder_operational_fields(df: pd.DataFrame, seed: int = 42) -> pd.D
     rng = np.random.default_rng(seed)
     n = len(df)
     df = df.copy()
-    df["institutional_delivery_rate"] = rng.uniform(0.10, 0.45, n).round(3)   # PLACEHOLDER — join real DHS/MICS by township
-    df["skilled_birth_attendance_rate"] = rng.uniform(0.08, 0.40, n).round(3)  # PLACEHOLDER
-    df["full_vaccination_rate"] = rng.uniform(0.40, 0.85, n).round(3)         # PLACEHOLDER
-    df["current_stock_days_remaining"] = rng.integers(0, 30, n)               # PLACEHOLDER — needs live feed
-    df["population_served"] = rng.integers(500, 12000, n)                     # PLACEHOLDER — join census/MIMU village pop
+    df["institutional_delivery_rate"] = rng.uniform(0.10, 0.45, n).round(3)   
+    df["skilled_birth_attendance_rate"] = rng.uniform(0.08, 0.40, n).round(3)  
+    df["full_vaccination_rate"] = rng.uniform(0.40, 0.85, n).round(3)         
+    df["current_stock_days_remaining"] = rng.integers(0, 30, n)               
+    df["population_served"] = rng.integers(500, 12000, n)                     
     df["road_access_flag"] = rng.choice(
         ["all_weather", "seasonal", "conflict_restricted"], n, p=[0.4, 0.35, 0.25]
-    )  # PLACEHOLDER — join ACLED conflict data / seasonal flood layer
+    )  
     df["_data_provenance"] = "location=REAL, operational/health fields=PLACEHOLDER"
     return df
 

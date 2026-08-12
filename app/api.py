@@ -45,7 +45,7 @@ app.add_middleware(
     CORSMiddleware, allow_origins=["*"], allow_methods=["*"], allow_headers=["*"]
 )
 
-STATE = {}  # holds graph, scored clinics, lookups — warm in memory
+STATE = {} 
 
 
 @app.on_event("startup")
@@ -105,8 +105,8 @@ def precomputed(region: str, hub: str):
 
 
 class RouteReq(BaseModel):
-    origin: str          # any node id (hub or clinic)
-    target: str          # any clinic id
+    origin: str          
+    target: str          
     risk_weight: float = 1.0
     equity_weight: float = 1.0
 
@@ -127,7 +127,7 @@ def live_route(req: RouteReq):
     except nx.NetworkXNoPath:
         raise HTTPException(422, "no path between origin and target")
 
-    # collapse to named waypoints + coords for the map
+    
     names = STATE["clinic_names"]
     wp = []
     for i, n in enumerate(path):
@@ -148,7 +148,7 @@ def live_route(req: RouteReq):
             "waypoints": wp, "polyline": line, "live": True}
 
 
-# serve the frontend at /
+
 FE = os.path.join(ROOT, "demo_data")
 if os.path.isdir(FE):
     app.mount("/", StaticFiles(directory=FE, html=True), name="frontend")

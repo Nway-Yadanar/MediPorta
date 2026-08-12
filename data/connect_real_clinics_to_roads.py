@@ -34,7 +34,6 @@ def main():
     print(f"Building road network for {len(clinics)} real clinics across "
           f"{clinics.township.nunique()} townships...")
 
-    # Hub per township, positioned at the REAL centroid of that township's clinics
     hubs = clinics.groupby("township").agg(
         latitude=("latitude", "mean"),
         longitude=("longitude", "mean"),
@@ -52,7 +51,7 @@ def main():
     ]
     nodes_df = pd.DataFrame(nodes)
 
-    # Backbone: connect each hub to its 5 nearest hubs (real distances, placeholder risk)
+    # connect each hub to its 5 nearest hubs (real distances, placeholder risk)
     edges = []
     seen_pairs = set()
     for i, h1 in hubs.iterrows():
@@ -71,7 +70,7 @@ def main():
                 "base_disruption_risk": round(rng.uniform(0.45, 0.75), 3) if is_risky else round(rng.uniform(0.03, 0.15), 3),
             })
 
-    # Last mile: connect each real clinic to its own township hub + 1 nearby hub
+    # connect each real clinic to its own township hub + 1 nearby hub
     for c in clinics.itertuples():
         own_hub = hubs[hubs.township == c.township].iloc[0]
         edges.append({
@@ -80,7 +79,7 @@ def main():
             "road_type": rng.choice(["tertiary", "track"], p=[0.5, 0.5]),
             "base_disruption_risk": round(rng.uniform(0.45, 0.70), 3),
         })
-        # second connection to nearest OTHER hub for real routing alternatives
+        # second connection to nearest OTHER hub 
         other_hubs = hubs[hubs.township != c.township].copy()
         other_hubs["dist"] = other_hubs.apply(
             lambda h: haversine_km(c.latitude, c.longitude, h.latitude, h.longitude), axis=1

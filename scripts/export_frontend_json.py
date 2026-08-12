@@ -124,7 +124,7 @@ def main():
     clinic_names = dict(zip(clinics["clinic_id"], clinics["clinic_name"]))
     township_lookup = {"clinic_names": clinic_names}
 
-    # ---- telecom-boosted triage ----------------------------------------
+    #  telecom
     tele_by_pcode = (
         telecom.drop_duplicates("township_pcode")
         .set_index("township_pcode")[["telecom_status", "priority_multiplier"]]
@@ -132,7 +132,7 @@ def main():
     )
     clinic_tele = clinics.set_index("clinic_id")["township_pcode"].to_dict()
 
-    # top demand row per clinic (its most urgent item) drives the marker
+    # top demand row per clinic 
     top_demand = (
         demand.sort_values("priority_score", ascending=False)
         .groupby("clinic_id").first().reset_index()
@@ -156,7 +156,7 @@ def main():
         })
     triage.sort(key=lambda x: x["boosted_priority"], reverse=True)
 
-    # rank movement caused by telecom boost (for the "watch it jump" demo beat)
+    # rank movement  by telecom boost 
     base_rank = {c["clinic_id"]: i for i, c in enumerate(
         sorted(triage, key=lambda x: x["base_priority"], reverse=True))}
     for i, c in enumerate(triage):
@@ -167,7 +167,7 @@ def main():
     with open(os.path.join(OUT, "triage.json"), "w") as f:
         json.dump(triage[:40], f, indent=2)
 
-    # ---- normal multi-clinic route (Grab-style chain) ------------------
+    #  normal multi-clinic route (Grab-style) 
     others = [c for c in sorted(water_clinics) if c != CLINIC_C][:2]
     plan = plan_multi_clinic_route(G, HUB, CLINIC_C, others, scored)
     normal_chain = []
@@ -188,7 +188,7 @@ def main():
             "n_clinics": plan["n_clinics_served"],
         }, f, indent=2)
 
-    # ---- failover scenario, both payloads ------------------------------
+    # failover
     fail_out = {}
     for item in PAYLOADS_TO_TEST:
         res = run_failover_scenario(
@@ -246,7 +246,7 @@ def main():
     with open(os.path.join(OUT, "failover.json"), "w") as f:
         json.dump(fail_out, f, indent=2)
 
-    # ---- map layers ----------------------------------------------------
+    # map 
     tri_by_id = {t["clinic_id"]: t for t in triage}
     clinic_markers = []
     for c in clinics.itertuples():
@@ -278,7 +278,7 @@ def main():
             "waterways": waterway_lines,
         }, f, indent=2)
 
-    # ---- meta ----------------------------------------------------------
+   
     tele_counts = telecom["telecom_status"].value_counts().to_dict()
     n_blackout_clinics = sum(1 for t in triage if t.get("blackout"))
     with open(os.path.join(OUT, "meta.json"), "w") as f:
@@ -304,7 +304,6 @@ def main():
         p = os.path.join(OUT, fn)
         print(f"  {fn:20s} {os.path.getsize(p):>7d} bytes")
 
-    # quick sanity print of the standout telecom beat
     movers = [t for t in triage if t["blackout"] and t["rank_delta"] > 0][:5]
     print("\nTelecom standout beat -- blackout clinics that moved UP in priority:")
     for m in movers:

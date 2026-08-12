@@ -19,12 +19,6 @@ import numpy as np
 import pandas as pd
 
 TARGET_REGIONS = ["Rakhine", "Sagaing", "Mandalay"]
-
-# Mandalay Region mixes a dense urban core with genuinely rural, underserved
-# townships. Since the ask is specifically "Mandalay rural areas, least medical
-# access", exclude the urban core townships (large city hospitals, 500-1500 beds)
-# and keep everything else -- the small Station-level facilities (16-50 beds)
-# that represent real rural/hard-to-reach access gaps.
 MANDALAY_URBAN_CORE_EXCLUDE = {"Chanayethazan", "Chanmyathazi", "Aungmyaythazan", "Mahaaungmyay"}
 
 
@@ -74,11 +68,10 @@ def add_placeholder_operational_fields(df: pd.DataFrame, seed: int = 42) -> pd.D
     df = df.copy()
 
     bed_numeric = pd.to_numeric(df["bed_class"], errors="coerce").fillna(16)
-    # Bed class gives a REAL signal we can use directly for population_served
     df["population_served"] = (bed_numeric * rng.uniform(15, 40, n)).round().astype(int)
 
-    # Rurality proxy from real bed_class: smaller facility -> lower baseline access rates
-    rurality = 1 - np.clip(bed_numeric / bed_numeric.max(), 0, 1)  # 0=largest facility, 1=smallest
+
+    rurality = 1 - np.clip(bed_numeric / bed_numeric.max(), 0, 1)  
     df["institutional_delivery_rate"] = np.clip(
         rng.normal(0.40 - 0.22 * rurality, 0.06, n), 0.05, 0.60
     ).round(3)  # PLACEHOLDER, rurality-informed
@@ -88,7 +81,7 @@ def add_placeholder_operational_fields(df: pd.DataFrame, seed: int = 42) -> pd.D
     df["full_vaccination_rate"] = np.clip(
         rng.normal(0.80 - 0.30 * rurality, 0.07, n), 0.30, 0.90
     ).round(3)  # PLACEHOLDER, rurality-informed
-    df["current_stock_days_remaining"] = rng.integers(0, 30, n)               # PLACEHOLDER
+    df["current_stock_days_remaining"] = rng.integers(0, 30, n)              
     df["road_access_flag"] = np.where(
         rurality > 0.6,
         rng.choice(["seasonal", "conflict_restricted"], n, p=[0.6, 0.4]),
@@ -111,7 +104,6 @@ def main():
 
     df_filtered = df[df["state_region"].isin(TARGET_REGIONS)].reset_index(drop=True)
 
-    # Apply Mandalay urban-core exclusion (keep Mandalay's rural/underserved townships only)
     is_mandalay_urban_core = (
         (df_filtered["state_region"] == "Mandalay")
         & (df_filtered["township"].isin(MANDALAY_URBAN_CORE_EXCLUDE))

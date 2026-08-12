@@ -30,10 +30,10 @@ import networkx as nx
 import numpy as np
 from scipy.spatial import cKDTree
 
-BOAT_SPEED_KMH = 18.0          # assumption: small river/coastal supply boat
-TRANSFER_PENALTY_HR = 0.5      # 30 min load/unload at a dock transfer  [assumption]
-WATER_SNAP_KM = 6.0            # a clinic is "near water" if within this of a dock
-BOAT_DISRUPTION_RISK = 0.25    # baseline water disruption (weather/current) [assumption]
+BOAT_SPEED_KMH = 18.0          
+TRANSFER_PENALTY_HR = 0.5      
+WATER_SNAP_KM = 6.0            
+BOAT_DISRUPTION_RISK = 0.25    
 
 
 def _haversine_km(lat1, lon1, lat2, lon2):
@@ -58,7 +58,6 @@ def add_water_layer(G: nx.Graph, waterways_path: str, docks_path: str, clinics_d
     waterways = load_geojson(waterways_path)
     docks = load_geojson(docks_path)
 
-    # --- road node KDTree for snapping docks to the road network ---
     road_nodes = [
         (n, d["lat"], d["lon"])
         for n, d in G.nodes(data=True)
@@ -78,7 +77,7 @@ def add_water_layer(G: nx.Graph, waterways_path: str, docks_path: str, clinics_d
         dock_ids.append(did)
         dock_coords.append((lat, lon))
 
-        # transfer edge: dock <-> nearest road vertex (carries the transfer penalty)
+
         _, idx = road_tree.query([lat, lon])
         rnode = road_ids[idx]
         rlat, rlon = road_coords[idx]
@@ -86,7 +85,7 @@ def add_water_layer(G: nx.Graph, waterways_path: str, docks_path: str, clinics_d
         G.add_edge(
             did, rnode,
             distance_km=round(dist, 3),
-            travel_time_hr=round(TRANSFER_PENALTY_HR, 3),  # penalty dominates a short hop
+            travel_time_hr=round(TRANSFER_PENALTY_HR, 3),  
             base_disruption_risk=0.05,
             access_risk_multiplier=1.0,
             road_type="transfer",
@@ -98,8 +97,7 @@ def add_water_layer(G: nx.Graph, waterways_path: str, docks_path: str, clinics_d
     dock_coords = np.array(dock_coords)
     dock_tree = cKDTree(dock_coords)
 
-    # --- add waterway edges between consecutive docks along each LineString ---
-    # Each waterway lists an ordered set of dock_ids it connects.
+
     for feat in waterways["features"]:
         seq = feat["properties"].get("dock_sequence", [])
         for a, b in zip(seq, seq[1:]):
@@ -119,7 +117,6 @@ def add_water_layer(G: nx.Graph, waterways_path: str, docks_path: str, clinics_d
                     _provenance="synthetic waterway edge (hand-drawn geometry)",
                 )
 
-    # --- dock <-> clinic edges for clinics near water ---
     water_clinic_ids = set()
     clinic_nodes = [
         (n, d["lat"], d["lon"])

@@ -16,8 +16,7 @@ max_transit_hours viability window.
 
 from app.graph_engine import route
 
-DETOUR_BUDGET_HR = 1.5   # max extra cost we'll accept to add an on-the-way clinic
-
+DETOUR_BUDGET_HR = 1.5   
 
 def plan_multi_clinic_route(
     G, hub, primary_target, candidate_clinics, clinics_scored,
@@ -35,14 +34,13 @@ def plan_multi_clinic_route(
         _, cost, dist = route(G, a, b, clinics_scored, risk_weight, equity_weight)
         return cost, dist
 
-    # current total for hub->target
     base_cost, base_dist = leg_cost(hub, primary_target)
     total_cost, total_dist = base_cost, base_dist
 
     remaining = list(candidate_clinics)
 
     while len(stops) - 1 < max_stops and remaining:
-        best = None  # (added_cost, insert_index, clinic, new_leg_costs)
+        best = None  
         for clinic in remaining:
             for i in range(len(stops) - 1):
                 a, b = stops[i], stops[i + 1]
@@ -61,7 +59,7 @@ def plan_multi_clinic_route(
         remaining.remove(clinic)
         total_cost += added
 
-    # recompute clean totals along final ordered stops
+   
     legs = []
     total_cost, total_dist = 0.0, 0.0
     for a, b in zip(stops, stops[1:]):

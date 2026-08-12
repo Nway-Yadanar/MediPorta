@@ -67,7 +67,6 @@ def run_failover_scenario(
     payload = payloads_df.set_index("item_id").loc[payload_item_id].to_dict()
     payload["item_id"] = payload_item_id
 
-    # --- NORMAL: multi-clinic on-the-way run to A, B, C ---
     normal = plan_multi_clinic_route(
         G, hub, clinic_c, [clinic_a, clinic_b], clinics_scored,
         risk_weight, equity_weight,
@@ -76,18 +75,17 @@ def run_failover_scenario(
         normal["total_cost_hr"], payload, has_cold_chain_transport=True
     )
 
-    # --- Identify the bridge to cut on the road path to C ---
+    #  Identify the bridge to cut on the road path to C 
     bridge = find_bridge_edge_on_path(G, hub, clinic_c)
     blocked = {bridge} if bridge else set()
 
-    # --- Reclassify accessibility under the blockage ---
+    
     reclass = classify_accessibility(
         G, clinics_scored, hub, water_clinic_ids, blocked_edges=blocked
     )
     c_status = reclass.set_index("clinic_id").loc[clinic_c, "access_status"]
 
-    # --- BLOCKAGE: remove bridge, reroute to C (boat fallback if needed) ---
-    H = G.copy()
+    #  BLOCKAGE: remove bridge, reroute to C boat fallback if needed
     if bridge:
         u, v = tuple(bridge)
         if H.has_edge(u, v):
@@ -105,7 +103,7 @@ def run_failover_scenario(
     except nx.NetworkXNoPath:
         boat_path, boat_cost, boat_dist, used_water, reachable = [], None, None, False, False
 
-    # cold-chain harder to maintain on an open boat leg -> flag transport as degraded
+    
     blockage_feasible, blockage_reason = (
         is_payload_feasible(boat_cost, payload, has_cold_chain_transport=not used_water)
         if reachable else (False, "clinic unreachable after bridge blockage")

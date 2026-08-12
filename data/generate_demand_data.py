@@ -27,21 +27,19 @@ import datetime as dt
 import numpy as np
 import pandas as pd
 
-from vulnerability_bridge import get_clinic_vulnerability  # local helper below
+from vulnerability_bridge import get_clinic_vulnerability 
 
 TODAY = dt.date(2026, 8, 10)
 
-STOCKOUT_THRESHOLD_DAYS = 5      # below this days-of-stock -> stockout_flag
-EXPIRY_THRESHOLD_DAYS = 30       # below this days-to-expiry -> expiry_risk_flag
+STOCKOUT_THRESHOLD_DAYS = 5     
+EXPIRY_THRESHOLD_DAYS = 30      
 
-# priority_score weights (exposed so they can be defended / tuned)
+# priority_score weights 
 W_URGENCY = 0.50
 W_CRITICALITY = 0.30
 W_VULNERABILITY = 0.20
 
-# Per-item life-criticality weight (0-1). Higher = more life-critical.
-# Grounded in clinical urgency: antivenom/oxytocin/OPV are time-critical;
-# ORS/RDTs are important but more substitutable / less immediately fatal.
+
 CRITICALITY = {
     "MED_ANTIVENOM": 1.00,
     "MED_OXYTOCIN": 0.95,
@@ -58,9 +56,6 @@ CRITICALITY = {
     "MED_RDT_DEN": 0.55,
 }
 
-# Regional disease weighting. Higher weight -> that item is more in-demand there.
-# Grounded in WHO/Health Cluster burden: Rakhine heavier malaria/dengue/cholera;
-# Sagaing heavier cholera/AWD + EPI vaccine catch-up; Mandalay (rural) mixed.
 REGION_ITEM_WEIGHT = {
     "Rakhine": {
         "MED_ACT": 1.4, "MED_RDT_MAL": 1.4, "MED_DENGUE_SUP": 1.5, "MED_RDT_DEN": 1.5,
@@ -82,11 +77,9 @@ REGION_ITEM_WEIGHT = {
     },
 }
 
-# How many distinct items each clinic stocks (drawn per clinic).
+
 ITEMS_PER_CLINIC_RANGE = (4, 9)
 
-# Clinics to force into a demo-worthy stockout scenario (real IDs from clinics.csv).
-# CL-0002 = Min Kun Station Hospital (Sagaing) -> cold-chain vaccine scenario clinic.
 DEMO_STOCKOUT_CLINICS = {"CL-0002", "CL-0006", "CL-0290"}
 
 
@@ -100,13 +93,11 @@ def main():
     item_ids = payloads["item_id"].tolist()
     item_disease = dict(zip(payloads["item_id"], payloads["disease_target"]))
     shelf_life = dict(zip(payloads["item_id"], payloads["shelf_life_days"]))
-
-    vuln = get_clinic_vulnerability(clinics)  # clinic_id -> 0..1
+    vuln = get_clinic_vulnerability(clinics)  
 
     rng = np.random.default_rng(20260810)
     rows = []
 
-    # pick the ~15 demo-subset clinics: the forced-stockout ones + a spread of others
     demo_extra = set(
         clinics.sort_values("population_served", ascending=False)
         .head(12)["clinic_id"].tolist()
@@ -116,8 +107,6 @@ def main():
     for c in clinics.itertuples():
         region = region_of(c.state_region)
         weights = REGION_ITEM_WEIGHT[region]
-
-        # select which items this clinic stocks, biased by regional weight
         n_items = rng.integers(*ITEMS_PER_CLINIC_RANGE)
         w = np.array([weights[i] for i in item_ids], dtype=float)
         w = w / w.sum()
@@ -132,9 +121,8 @@ def main():
             weekly = max(weekly, 3)
 
             if force_stockout:
-                stock = int(rng.integers(0, weekly // 2 + 1))  # < ~3.5 days
+                stock = int(rng.integers(0, weekly // 2 + 1))  
             else:
-                # most clinics healthy-ish; some naturally low
                 days_target = rng.uniform(1.5, 35)
                 stock = int(round(weekly / 7 * days_target))
 

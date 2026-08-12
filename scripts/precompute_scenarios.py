@@ -34,7 +34,7 @@ from app.regions import REGIONS, default_hub
 
 DATA = os.path.join(ROOT, "data")
 OUT = os.path.join(ROOT, "demo_data", "precomputed")
-PAYLOADS_TEST = None  # None = all items in medical_payloads.csv (set at runtime)
+PAYLOADS_TEST = None  
 
 
 def priority_color(s):
@@ -86,8 +86,7 @@ def pick_scenario_clinic(G, hub, region_clinics, water_clinics, want_water, road
         return abs(G.nodes[c]["lat"]-hub_lat) + abs(G.nodes[c]["lon"]-hub_lon)
 
     if road_reroute:
-        # want a clinic with a high-risk edge on its path that, when cut, still
-        # leaves an alternate road path (a genuine reroute story)
+
         for c in sorted(pool, key=near):
             try:
                 path = nx.shortest_path(H, hub, c)
@@ -200,7 +199,7 @@ def main():
             payload_results = {}
             normal_route = None
             if scen_clinic and nx.has_path(G, hub_id, scen_clinic):
-                # on-the-way run: hub -> a couple region clinics -> scenario clinic
+                # on-the-way run
                 extras = [c for c in region_clinics
                           if c != scen_clinic and c != hub_id][:2]
                 plan = plan_multi_clinic_route(G, hub_id, scen_clinic, extras, scored)
@@ -217,10 +216,8 @@ def main():
                              for l in plan["legs"]],
                 }
 
-                # failover: choose the edge to cut based on story type
+                # failover
                 if is_road:
-                    # road reroute: cut the highest-risk edge on the path, but keep
-                    # an alternate road route (a safe detour, not a disconnection)
                     Hr = _road_only_view(G)
                     try:
                         p = nx.shortest_path(Hr, hub_id, scen_clinic)
@@ -299,7 +296,7 @@ def main():
                         },
                     }
 
-            # --- map layers scoped to region ---
+            #  map layers/ region 
             tri_by_id = {t["clinic_id"]: t for t in triage}
             markers = []
             for c in clinics.itertuples():

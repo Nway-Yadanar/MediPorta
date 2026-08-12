@@ -33,9 +33,6 @@ import numpy as np
 import pandas as pd
 
 TARGET_REGIONS = ["Rakhine", "Sagaing", "Mandalay"]
-
-# Drivable road classes (excludes footway/path/steps/pedestrian/bus_stop/crossing/
-# milestone/service -- not relevant for vehicle medical-supply routing)
 DRIVABLE_HIGHWAY_TYPES = [
     "trunk", "trunk_link", "primary", "primary_link", "secondary", "secondary_link",
     "tertiary", "tertiary_link", "unclassified", "residential", "living_street", "track",
@@ -48,12 +45,9 @@ ROAD_TYPE_MAP = {
     "residential": "tertiary", "living_street": "tertiary", "track": "track",
 }
 
-# Placeholder disruption-risk baseline by road class (real road geometry, but
-# no open dataset publishes an actual conflict/flood risk layer -- see
-# REAL_DATA_SOURCES.md for what would replace this)
 BASE_RISK_BY_TYPE = {"primary": 0.12, "secondary": 0.22, "tertiary": 0.35, "track": 0.55}
 
-COORD_PRECISION = 6  # ~11cm at the equator -- safe snapping for shared OSM endpoints
+COORD_PRECISION = 6  
 
 
 def parse_gpb_geometry(blob: bytes):
@@ -183,7 +177,7 @@ def build_graph_from_edges(raw_edges):
             node_list.append((node_coord_to_id[key], lat, lon))
         return node_coord_to_id[key]
 
-    adj = defaultdict(dict)  # node_id -> {neighbor_id: (dist_km, road_type)}
+    adj = defaultdict(dict)  
     seen_edge_keys = set()
     for lon1, lat1, lon2, lat2, road_type in raw_edges:
         n1 = get_node_id(lon1, lat1)

@@ -56,7 +56,7 @@ def load_via_file(path: str):
     print(f"Loaded {len(gdf)} road segments from {path}")
 
     G = ox.graph_from_gdfs(
-        gdf_nodes=None,  # let osmnx derive nodes from the edge geometries
+        gdf_nodes=None,  
         gdf_edges=gdf,
     ) if hasattr(ox, "graph_from_gdfs") else None
 
@@ -107,9 +107,6 @@ def osmnx_graph_to_mediroute_schema(G) -> tuple[pd.DataFrame, pd.DataFrame]:
             "from_node": f"N-{u}", "to_node": f"N-{v}",
             "distance_km": round(length_m / 1000, 3),
             "road_type": road_type,
-            # OSM doesn't carry a disruption-risk field — this is the layer you enrich
-            # with ACLED conflict data or a flood/monsoon layer for the real pipeline.
-            # Default placeholder: rougher road types get a higher baseline.
             "base_disruption_risk": {"primary": 0.1, "secondary": 0.2, "tertiary": 0.35, "track": 0.5}[road_type],
         })
     edges_df = pd.DataFrame(edges)

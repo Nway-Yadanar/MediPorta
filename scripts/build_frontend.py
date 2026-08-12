@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+
 """Build the multi-region MediRoute console with region/hub switchers + animation."""
 import json
 import os
@@ -134,6 +134,9 @@ font-weight:600;font-size:13px;padding:11px;border-radius:5px;cursor:pointer;mar
 .og .ogrow .pri{font-family:var(--disp);color:var(--blackout);font-weight:600}
 .og .ogrec{margin-top:9px;font-size:10.5px;color:var(--blackout);font-family:var(--disp);letter-spacing:.04em}
 .og .ognote{margin-top:6px;font-size:10px;color:var(--fog);line-height:1.5;font-style:italic}
+
+
+
 .destbtn{display:block;width:100%;margin-top:8px;padding:6px 8px;background:var(--gold,#ffd24a);
   color:#0b1013;border:none;border-radius:4px;font-family:var(--mono);font-size:11px;font-weight:700;
   cursor:pointer;letter-spacing:.03em}
@@ -146,7 +149,11 @@ font-weight:600;font-size:13px;padding:11px;border-radius:5px;cursor:pointer;mar
 .liveroute .lrb b{color:#fff;font-size:14px}
 .liveroute code{background:rgba(255,255,255,.08);padding:1px 4px;border-radius:3px;font-size:10px}
 .badge.hub{background:rgba(255,210,74,.18);color:var(--gold)}
-</style></head><body>
+</style>
+</head>
+<body>
+
+
 <div id="app">
   <aside class="panel">
     <div class="pad">
@@ -188,6 +195,8 @@ font-weight:600;font-size:13px;padding:11px;border-radius:5px;cursor:pointer;mar
       penalty, per-segment cold-chain capability, conflict-proxy telecom, hub role.
     </div>
   </aside>
+
+
   <div class="mapwrap">
     <div id="map"></div>
     <div id="liveRoute" class="liveroute"></div>
@@ -212,6 +221,8 @@ font-weight:600;font-size:13px;padding:11px;border-radius:5px;cursor:pointer;mar
     </div>
   </aside>
 </div>
+
+
 <script>
 const BUNDLE=__DATA__;
 const S={region:null,hub:null,scenario:"normal",payload:"MED_ORS",tele:"base"};
@@ -240,6 +251,8 @@ function initSelectors(){
   document.getElementById("destSel").onchange=e=>{S.dest=e.target.value;applyDestination();};
   S.region=Object.keys(BUNDLE.regions)[0];rs.value=S.region;populateHubs();
 }
+
+
 function populatePayloads(){
   const ps=document.getElementById("paySel");ps.innerHTML="";
   const groups={vaccine:"Vaccines",medicine:"Medicines",test_kit:"Test kits",antivenom:"Antivenom"};
@@ -260,6 +273,8 @@ function populatePayloads(){
       o.textContent=p.item_name;og.appendChild(o);});ps.appendChild(og);});
   S.payload=BUNDLE.payloads[0].item_id;ps.value=S.payload;
 }
+
+
 function populateHubs(){
   const hs=document.getElementById("hubSel");hs.innerHTML="";
   BUNDLE.regions[S.region].hubs.forEach(h=>{const o=document.createElement("option");
@@ -337,6 +352,7 @@ function drawClinics(){
     mk.addTo(layers.clinics);
   });
 }
+
 // ---- destination selection: live route via API, graceful fallback if static ----
 async function setDestination(clinicId,clinicName){
   if(hasMap())map.closePopup();
@@ -377,6 +393,8 @@ function curRoute(){
   return {waypoints:bl.reroute_waypoints||[],polyline:bl.reroute_polyline||[],
     feasible:bl.payload_feasible,water:bl.reroute_uses_water};
 }
+
+
 function dedupe(wp){const o=[];let last=null;wp.forEach(w=>{if(w.id!==last)o.push(w);last=w.id;});return o;}
 function drawChain(){
   const r=curRoute(),el=document.getElementById("chain");el.innerHTML="";
@@ -399,6 +417,8 @@ function drawChain(){
     r.waypoints.forEach(w=>{if(w.lat)L.circleMarker([w.lat,w.lon],{radius:5,fillColor:"#fff",color:"#0b1013",weight:2,fillOpacity:1}).addTo(layers.route);});
   }
 }
+
+
 function stopAnim(){}
 function drawCC(){
   const f=SC.failover&&SC.failover[S.payload];
@@ -434,14 +454,18 @@ function drawCC(){
     +'<div class="gauge"><i style="width:'+pct+'%;background:'+(ok?"#3fd08a":"linear-gradient(90deg,#ffb03a,#ff5a3c)")+'"></i></div>'
     +'<div class="verdict '+(ok?"ok":"fail")+'">'+verdict+'</div><div class="reason">'+reason+'</div>'+fix;
 }
+
+
 function drawCCLive(hrs, usesWater, destName){
-  // CARRYING card for a live custom-destination route + selected medicine.
+  // card for a live custom-destination route + selected medicine.
   const p=BUNDLE.payloads.find(x=>x.item_id===S.payload);if(!p)return;
   let win=parseFloat(p.max_transit_hours);
   const cold=(p.cold_chain===true||String(p.cold_chain).toUpperCase()==="TRUE");
   if(isNaN(win))win=cold?48:720;
   const COLDBOX_WINDOW_H=72;
+
   // feasible if within window AND (not cold, OR route doesn't break cold chain on water)
+
   const withinTime=hrs!=null&&hrs<=win;
   const coldBreak=cold&&usesWater;
   const ok=withinTime&&!coldBreak;
@@ -479,6 +503,8 @@ function drawCCLive(hrs, usesWater, destName){
     +'<div class="gauge"><i style="width:'+pct+'%;background:'+(ok?"#3fd08a":"linear-gradient(90deg,#ffb03a,#ff5a3c)")+'"></i></div>'
     +'<div class="verdict '+(ok?"ok":"fail")+'">'+verdict+'</div><div class="reason">'+reason+'</div>'+fix+dnote;
 }
+
+
 function drawTriage(){
   const boost=S.tele==="boost";
   // Stock only = pure days-of-stock, lowest first (most urgent).
@@ -509,6 +535,8 @@ function drawTriage(){
       +'<div class="delta'+(moved?" show":"")+'">'+(moved?"\u25b2"+t.rank_delta:"")+'</div>';el.appendChild(d);
   });
 }
+
+
 function drawOffgrid(){
   const el=document.getElementById("offgrid");if(!el)return;
   // off-grid = blackout clinics: cut off from the network, can't call for resupply.
@@ -530,6 +558,8 @@ function drawOffgrid(){
     +'it does not provide the link. Blackout data: Access Now / #KeepItOn / Myanmar Shutdown Tracker.</div>'
     +'</div>';
 }
+
+
 function tog(id,key,dkey,cb){document.querySelectorAll("#"+id+" button").forEach(b=>{
   b.onclick=()=>{document.querySelectorAll("#"+id+" button").forEach(x=>x.classList.remove("on"));
     b.classList.add("on");S[key]=b.dataset[dkey];cb();};});}
