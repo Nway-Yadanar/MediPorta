@@ -33,10 +33,7 @@ from collections import defaultdict
 
 import pandas as pd
 
-# Townships with documented, long-running shutdowns (real reporting).
-# Northern Rakhine has been under the most prolonged internet restrictions in
-# the country; several Sagaing townships saw shutdowns during operations.
-# Matched by township NAME (case-insensitive) against MIMU township field.
+
 KNOWN_BLACKOUT_TOWNSHIPS = {
     # Rakhine (prolonged shutdowns)
     "buthidaung": "blackout",

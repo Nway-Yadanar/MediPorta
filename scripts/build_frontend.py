@@ -448,18 +448,27 @@ function drawCCLive(hrs, usesWater, destName){
   const margin=hrs!=null?+(win-hrs).toFixed(1):null;
   const pct=hrs!=null?Math.min(100,(hrs/win)*100):0;
   let verdict,reason,fix="";
+  // A WHO passive cold box holds 2-8C for ~72h without power. So it rescues ANY
+  // cold-chain failure where the route fits inside that 72h window -- whether the
+  // failure is a boat leg breaking cold chain, or the item's own short window
+  // being exceeded. Show the recommendation consistently in every such case.
+  const coldBoxWouldHelp = cold && hrs!=null && hrs<=COLDBOX_WINDOW_H && !ok;
+  const coldboxFix =
+    '<div class="fix"><span class="fixh">\u2713 RECOMMENDED FIX</span>'
+    +'Load a WHO passive cold box (holds 2\u20138\u00b0C for ~'+COLDBOX_WINDOW_H+'h without power). '
+    +'This route is '+(hrs!=null?hrs.toFixed(1):"?")+'h \u2014 inside the cold-box window. '
+    +'<b>With a cold box, this delivery becomes feasible.</b></div>';
   if(ok){verdict="\u2713 delivers in time, cold chain intact";reason="Arrives with "+margin+"h to spare, within the "+win+"h window.";}
   else if(coldBreak&&withinTime){
     verdict="\u2715 arrives in time \u2014 but spoiled";
     reason="Route is "+hrs.toFixed(1)+"h (inside "+win+"h), but "+p.item_name+" needs "+p.storage_temp+"\u00b0C and the open boat leg can't hold cold chain.";
-    if(hrs<=COLDBOX_WINDOW_H){
-      fix='<div class="fix"><span class="fixh">\u2713 RECOMMENDED FIX</span>'
-        +'Load a WHO passive cold box (holds '+p.storage_temp+'\u00b0C for ~'+COLDBOX_WINDOW_H+'h without power). '
-        +'The boat leg is only '+hrs.toFixed(1)+'h \u2014 well inside that window. '
-        +'<b>With a cold box, this delivery becomes feasible.</b></div>';
-    }
+    if(coldBoxWouldHelp)fix=coldboxFix;
   }
-  else{verdict="\u2715 can't reach in time";reason="Route is "+(hrs!=null?hrs.toFixed(1):"?")+"h, past the "+win+"h window.";}
+  else{
+    verdict="\u2715 can't reach in time";
+    reason="Route is "+(hrs!=null?hrs.toFixed(1):"?")+"h, past the "+win+"h window for "+p.item_name+".";
+    if(coldBoxWouldHelp)fix=coldboxFix;
+  }
   const dnote='<div class="reason" style="margin-top:6px;font-style:italic;opacity:.8">Live route on the current network. Bridge-blockage failover is modelled for the default scenario clinic.</div>';
   const el=document.getElementById("ccCard");el.className="cc "+(ok?"ok":"fail");
   el.innerHTML='<div class="mani">CARRYING \u00b7 '+(destName||"")+'</div>'
