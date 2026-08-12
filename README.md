@@ -1,4 +1,4 @@
-# MediRoute — GeoAI Medical Support
+# MediPorta — GeoAI Medical Support
 
 **Reactive supply systems wait for clinics to call for resupply. The clinics in
 worst condition — behind cut roads, rivers, or communication blackouts — can't
