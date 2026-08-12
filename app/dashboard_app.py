@@ -1,5 +1,5 @@
 """
-dashboard_app.py — MediRoute decision dashboard
+dashboard_app.py — MediPorta decision dashboard
 
 Run locally (needs internet for map tiles + the packages below):
     pip install streamlit folium streamlit-folium pandas networkx
@@ -20,9 +20,6 @@ from vulnerability import compute_vulnerability_scores
 
 st.set_page_config(page_title="MediRoute — GeoAI Medical Support", layout="wide")
 
-# ---------------------------------------------------------------------------
-# Data loading (cached so sliders don't re-read CSVs every interaction)
-# ---------------------------------------------------------------------------
 @st.cache_data
 def load_data():
     clinics = pd.read_csv("../data/clinics.csv")
@@ -35,9 +32,7 @@ clinics_scored, nodes, edges = load_data()
 G = build_graph(nodes, edges, clinics_scored)
 node_pos = nodes.set_index("node_id")[["latitude", "longitude"]].to_dict("index")
 
-# ---------------------------------------------------------------------------
-# Sidebar — the "wow factor" live controls
-# ---------------------------------------------------------------------------
+
 st.sidebar.title("MediRoute Controls")
 st.sidebar.caption("Adjust in real time to see routes and priorities update.")
 
@@ -58,9 +53,7 @@ st.sidebar.markdown("---")
 st.sidebar.caption("Data sources: MIMU GeoNode (PCodes) · HOT/HDX (roads) · WHO/UNICEF (health baselines)")
 st.sidebar.caption("⚠️ Demo build uses synthetic data structured to match real source schemas.")
 
-# ---------------------------------------------------------------------------
-# Header + KPIs
-# ---------------------------------------------------------------------------
+
 st.title("🩺 MediRoute — GeoAI Medical Support")
 st.caption("Risk-weighted delivery routing and stockout triage for Rakhine State")
 
@@ -74,9 +67,6 @@ st.markdown("---")
 
 col_map, col_queue = st.columns([2, 1])
 
-# ---------------------------------------------------------------------------
-# Priority dispatch queue
-# ---------------------------------------------------------------------------
 with col_queue:
     st.subheader("📋 Priority Dispatch Queue")
     queue = build_priority_queue(clinics_scored, top_n=10)
@@ -90,9 +80,7 @@ with col_queue:
     target_clinic = st.selectbox("Route to clinic:", queue["clinic_id"].tolist(),
                                   format_func=lambda cid: clinics_scored.set_index("clinic_id").loc[cid, "clinic_name"])
 
-# ---------------------------------------------------------------------------
-# Map: risk heatmap + route(s)
-# ---------------------------------------------------------------------------
+
 with col_map:
     st.subheader("🗺️ Risk Heatmap & Route")
 

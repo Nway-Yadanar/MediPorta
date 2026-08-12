@@ -1,8 +1,8 @@
-# MediRoute — Risk-Weighted Medical Supply Routing (Myanmar)
+# MediRoute — GeoAI Medical Support
 
 **Reactive supply systems wait for clinics to call for resupply. The clinics in
 worst condition — behind cut roads, rivers, or communication blackouts — can't
-call. MediRoute treats their silence as the strongest signal of need and pushes
+call. MediPorta treats their silence as the strongest signal of need and pushes
 life-saving supplies to the clinics everyone else is blind to.**
 
 It routes supplies to 306 real clinics across Rakhine, Sagaing, and rural
@@ -76,7 +76,7 @@ The console loads with the map, the routing engine running live behind it.
 
 ## How it works
 
-MediRoute runs Dijkstra's shortest-path algorithm over a multi-modal graph where
+MediPorta runs Dijkstra's shortest-path algorithm over a multi-modal graph where
 road, boat, and dock-transfer connections all live in one network — so a
 truck-to-boat reroute happens naturally, with no special code. The cost of each
 step isn't distance; it's travel time weighted by disruption risk, so the system
@@ -143,4 +143,4 @@ be built on invisible assumptions.
 
 ---
 
-*AI usage: generative AI was used to help scaffold and draft code in this repository.*
+*AI usage: generative AI was used to help find data sources and synthetic data*

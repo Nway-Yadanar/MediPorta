@@ -159,11 +159,11 @@ if __name__ == "__main__":
     detection_ms = (time.time() - t0) * 1000
     print(f"\nStockout scoring detection time: {detection_ms:.2f} ms (target: <60,000 ms) -> {'PASS' if detection_ms < 60000 else 'FAIL'}")
 
-    # --- Priority queue ---
+    
     print("\nTop priority dispatch queue:")
     print(build_priority_queue(scored, top_n=5).to_string(index=False))
 
-    # --- Naive vs MediRoute route comparison demo ---
+    
     source, target = "HUB-Sittwe", scored.iloc[0]["clinic_id"]  # route to most vulnerable clinic
     print(f"\nRouting from {source} to most urgent clinic {target}...")
 
