@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # MediRoute — Risk-Weighted Medical Supply Routing (Myanmar)
 
 **Reactive supply systems wait for clinics to call. The clinics in worst shape —
@@ -106,3 +107,6 @@ Every synthetic field is labelled — the system never passes proxy data as real
 
 ---
 *AI usage declaration: Generative AI was used to scaffold and draft code in this repository.*
+=======
+# MediPorta
+>>>>>>> 376f61a09cc9d881b7e7edad14fe2f2fd73d0c2e
